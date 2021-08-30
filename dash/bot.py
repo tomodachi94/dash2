@@ -10,7 +10,7 @@ DISCORD_PREFIX = os.environ.get("DISCORD_PREFIX", "_")
 
 bot = lightbulb.Bot(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
 
-@bot.command
+@bot.command()
 async def about(ctx):
     await ctx.respond(
     """
