@@ -10,12 +10,18 @@ DISCORD_PREFIX = os.environ.get("DISCORD_PREFIX", "_")
 
 bot = lightbulb.Bot(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
 
+
 @bot.command()
 async def about(ctx):
-    await ctx.respond(
     """
+    Returns information about the bot.
+    """
+    await ctx.respond(
+        """
     Dash is a bot for the FTB Wiki's Discord.
     https://github.com/Tomodachi94/dash2
-    """)
+    """
+    )
+
 
 bot.run()
