@@ -23,5 +23,13 @@ async def about(ctx):
     """
     )
 
+class About(lightbulb.SlashCommand):
+    description = "Returns information about the bot.."
+
+    async def callback(self, context):
+        await context.respond("""Dash is a bot for the FTB Wiki's Discord.
+    https://github.com/Tomodachi94/dash2""")
+
+bot.add_slash_command(About)
 
 bot.run()
