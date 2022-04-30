@@ -12,6 +12,8 @@ bot = lightbulb.Bot(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
 
 
 @bot.command()
+@lightbulb.command("about", "Tells you about the bot.")
+@lightbulb.implements(lightbulb.SlashCommand)
 async def about(ctx):
     """
     Returns information about the bot.
