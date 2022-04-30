@@ -8,7 +8,7 @@ dotenv.load_dotenv()
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 DISCORD_PREFIX = os.environ.get("DISCORD_PREFIX", "_")
 
-bot = lightbulb.Bot(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
+bot = lightbulb.BotApp(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
 
 
 @bot.command()
