@@ -1,7 +1,8 @@
-import lightbulb
 import dotenv
 import os
-import logging
+
+import giphy_client
+import lightbulb
 
 # environment
 dotenv.load_dotenv()
