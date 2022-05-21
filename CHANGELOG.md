@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+# [unreleased]
+
+- Migrate commands to Lightbulb's extensions.
+- Move `dash/bot.py` to `dash/main.py`.
+
+
 ## v0.3.0
 
 - Added `bunny` command. Requires a Giphy API token. (#8, Tomodachi94)
