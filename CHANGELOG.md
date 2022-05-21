@@ -5,9 +5,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-# [unreleased]
+## v0.3.1
 
-- Migrate commands to Lightbulb's extensions.
+- Migrate commands to Lightbulb's extensions. (#10, Tomodachi94)
 - Move `dash/bot.py` to `dash/main.py`.
 
 
