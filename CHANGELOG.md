@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## v0.4.0
+
+- Implement `article` command group (#12, Tomodachi94)
+    - Implement `article links` command, which shows links to other pages.
+    - Implement `article revision` command, which shows a page's revision ID and a permanent link to it.
+	- Implement `article random` command, which shows a random page.
+
 ## v0.3.2
 - Fix extension path bug. (c463746321ff197991e6a180eb6bdabda7c8b1c3, Tomodachi94)
 
