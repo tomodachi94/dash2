@@ -10,9 +10,9 @@ MEDIAWIKI_BASE_URL = os.environ["MEDIAWIKI_BASE_URL"]
 plugin = lightbulb.Plugin("MediaWiki")
 wiki = MediaWiki(url=MEDIAWIKI_API, user_agent="Dash2 v0.3.1 via pymediawiki: https://github.com/tomodachi94/dash2 ")
 
-def _make_url(title: str, embed=False)
+def _make_url(title: str, embed=False):
     url = os.path.join(MEDIAWIKI_BASE_URL, title)
-    url = item.replace(" ", "_")
+    url = url.replace(" ", "_")
     if not embed:
         url = "<" + url + ">"
     
