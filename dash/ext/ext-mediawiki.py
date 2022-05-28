@@ -46,6 +46,20 @@ async def article_links(ctx: lightbulb.Context):
     out = "\n".join(out)
     await ctx.respond(out)
 
+@article.child
+@lightbulb.option("article_title", "The title of the target page.")
+@lightbulb.option("show_embeds", "Toggle showing embeds. Disabled by default to prevent chat spam.", required=False, default=False)
+@lightbulb.command("revision", "Retrieves a page's current revision ID.")
+@lightbulb.implements(lightbulb.SlashSubCommand)
+async def article_revision(ctx: lightbulb.Context):
+    article_title = ctx.options.article_title
+    page = wiki.page(article_title)
+    article_revision_id = page.revision_id
+    url = _make_url(f"{article_title}?oldid={article_revision_id}")
+    out = f"The revision ID for the page `{article_title}` is `{article_revision_id}`, available permanently at {url}."
+    await ctx.respond(out)
+
+
 def load(bot):
     bot.add_plugin(plugin)
 
