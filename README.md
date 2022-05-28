@@ -13,6 +13,8 @@ Paste this into it:
 DISCORD_TOKEN=<Discord token>
 DISCORD_PREFIX=_
 GIPHY_TOKEN=<Giphy token>
+MEDIAWIKI_API=https://ftb.fandom.com/api.php
+MEDIAWIKI_BASE_URL=https://ftb.fandom.com/wiki/
 ```
 
 Note: You can also use your hosting platform's method for setting environment variables.
