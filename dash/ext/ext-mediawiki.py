@@ -16,6 +16,30 @@ wiki = MediaWiki(url=MEDIAWIKI_API, user_agent="Dash2 v0.3.1 via pymediawiki: ht
 async def article(ctx: lightbulb.Context) -> None:
     pass
 
+@article.child
+@lightbulb.option("article_title", "The title of the target page.")
+@lightbulb.option("show_embeds", "Toggle showing embeds. Disabled by default to prevent chat spam.", required=False, default=False)
+@lightbulb.command("links", "Retrieves a page's links to other pages.")
+@lightbulb.implements(lightbulb.SlashSubCommand)
+async def article_links(ctx: lightbulb.Context):
+    article_title = ctx.options.article_title
+    page = wiki.page(article_title)
+    links = page.links
+    out = []
+    for item in links:
+        item = os.path.join(MEDIAWIKI_BASE_URL, item)
+        item = item.replace(" ", "_")
+        if not ctx.options.show_embeds:
+            item = "<" + item + ">"
+        out.append(item)
+    # paginated = lightbulb.utils.pag.Paginator
+    # for item in out:
+    #     paginated._add_line(paginated, line=item)
+    # navigator = lutil.nav.ButtonNavigator(paginated.build_pages())
+    # await navigator.run(ctx)
+    out = "\n".join(out)
+    await ctx.respond(out)
+
 def load(bot):
     bot.add_plugin(plugin)
 
