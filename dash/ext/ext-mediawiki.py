@@ -59,6 +59,30 @@ async def article_revision(ctx: lightbulb.Context):
     out = f"The revision ID for the page `{article_title}` is `{article_revision_id}`, available permanently at {url}."
     await ctx.respond(out)
 
+@article.child
+@lightbulb.option("show_embeds", "Toggle showing embeds. Disabled by default to prevent chat spam.", required=False, default=False)
+@lightbulb.option("number", "The amount of random articles to retrieve. Defaults to 1.", type=int, default=1)
+@lightbulb.command("random", "Shows a random article.")
+@lightbulb.implements(lightbulb.SlashSubCommand)
+async def article_random(ctx: lightbulb.Context):
+    random_amount = ctx.options.number
+    show_embeds = ctx.options.show_embeds
+
+    articles = wiki.random(pages=random_amount)
+
+    if random_amount != 1:
+        out = []
+        for item in articles:
+            item = _make_url(item, show_embeds)
+            out.append(item)
+
+        out = "\n".join(out) # converts the list above into a newline-delimited string
+    else:
+        out = articles
+        out = _make_url(out, show_embeds)
+
+    await ctx.respond(out)
+
 
 def load(bot):
     bot.add_plugin(plugin)
