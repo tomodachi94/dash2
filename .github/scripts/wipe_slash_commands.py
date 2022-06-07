@@ -13,8 +13,10 @@ DISCORD_APP_ID = int(os.environ["DISCORD_APP_ID"])
 
 rest = hikari.RESTApp()
 
+
 async def main():
     async with rest.acquire(DISCORD_TOKEN, hikari.TokenType.BOT) as client:
         await client.set_application_commands(DISCORD_APP_ID, [])
+
 
 asyncio.run(main())

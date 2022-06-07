@@ -8,6 +8,7 @@ plugin = lightbulb.Plugin("Giphy")
 
 GIPHY_TOKEN = os.environ["GIPHY_TOKEN"]
 
+
 @plugin.command()
 @lightbulb.command("bunny", "Sends a bunny GIF.")
 @lightbulb.implements(lightbulb.PrefixCommand, lightbulb.SlashCommand)
@@ -24,8 +25,10 @@ async def bunny(ctx: lightbulb.Context):
     embed_url = data["embed_url"]
     await ctx.respond(embed_url)
 
+
 def load(bot):
     bot.add_plugin(plugin)
+
 
 def unload(bot):
     bot.remove_plugin(plugin)
