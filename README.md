@@ -6,8 +6,11 @@ Changes are documented in [the changelog](CHANGELOG.md).
 
 ## Running
 
-Create a file named `.env` in the root of the project.
-Paste this into it:
+Running is easy if you have [just](https://just.systems/man/en/chapter_1.html) installed.
+
+Run `just install-fancy` and `just start` to take the bot for a spin. You will be prompted to enter the proper authentication tokens by your $EDITOR.
+
+### Manually
 
 Copy the file named `example.env` in the root of the project to `.env` and modify it.
 
@@ -28,3 +31,11 @@ And, finally, run this to run the bot:
 ```bash
 python dash/main.py
 ```
+
+## Development
+
+Install [just](https://just.systems/man/en/chapter_1.html) and execute `just install-dev`. 
+
+Then, configure the `.env` file. The primary developer recommends changing the default Discord prefix to prevent command conflicts.
+
+Periodically run `just check` to run the preferred linter, `flake8`.
