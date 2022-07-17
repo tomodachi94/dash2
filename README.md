@@ -9,19 +9,13 @@ Changes are documented in [the changelog](CHANGELOG.md).
 Create a file named `.env` in the root of the project.
 Paste this into it:
 
-```env
-DISCORD_TOKEN=<Discord token>
-DISCORD_PREFIX=_
-GIPHY_TOKEN=<Giphy token>
-MEDIAWIKI_API=https://ftb.fandom.com/api.php
-MEDIAWIKI_BASE_URL=https://ftb.fandom.com/wiki/
-```
+Copy the file named `example.env` in the root of the project to `.env` and modify it.
 
-Note: You can also use your hosting platform's method for setting environment variables.
+Alternatively, you can also use your hosting platform's method for setting environment variables.
 
-Ensure you have a Discord bot token, then paste it into the first line as indicated.
+Ensure you [have a Discord bot token](https://github.com/reactiflux/discord-irc/wiki/Creating-a-discord-bot-&-getting-a-token), then paste it into the `DISCORD_TOKEN` key.
 
-Then, [obtain a Giphy API token](https://developers.giphy.com/docs/api) and paste it into the indicated space.
+Then, [obtain a Giphy API token](https://developers.giphy.com/docs/api) and paste it into the `GIPHY_TOKEN` key.
 
 After that, run the following to install dependencies:
 
