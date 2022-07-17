@@ -3,11 +3,17 @@
 # just is "just a command runner."
 # Docs: https://just.systems/man/en/chapter_1.html
 
+PYTHON_BINARY := "./.venv/bin/python"
+PIP_BINARY := "./.venv/bin/pip"
+
 start:
 	python3 ./dash/main.py
 
-install:
-    python3 -m pip install -r ./requirements.txt
+init-virtualenv:
+	python3 -m venv ./.venv/
+
+install: init-virtualenv
+    {{ PIP_BINARY }} install -r ./requirements.txt
     cp ./example.env ./.env
     echo "Edit .env to configure the bot."
 
@@ -17,7 +23,8 @@ install-fancy: install
 	$EDITOR .env
 
 install-dev: install
-	pip install -r ./requirements-dev.txt
+	{{PIP_BINARY}} install -r ./requirements-dev.txt -qqq
 
 check: install-dev
 	python3 -m flake8 dash
+
