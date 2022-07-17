@@ -1,5 +1,4 @@
 import os
-import json
 from mediawiki import MediaWiki
 
 import lightbulb

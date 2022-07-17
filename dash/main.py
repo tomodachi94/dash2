@@ -1,9 +1,6 @@
 import dotenv
 import os
-import pathlib
-import json
 
-import hikari
 import lightbulb
 
 # environment
