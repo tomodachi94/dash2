@@ -9,7 +9,9 @@ MEDIAWIKI_BASE_URL = os.environ["MEDIAWIKI_BASE_URL"]
 plugin = lightbulb.Plugin("MediaWiki")
 wiki = MediaWiki(
     url=MEDIAWIKI_API,
-    user_agent = "Dash2 v0.3.1 via pymediawiki: https://github.com/tomodachi94/dash2 ")
+    user_agent=("Dash2 v0.3.1 via pymediawiki: "
+                "https://github.com/tomodachi94/dash2")
+)
 
 
 def _make_url(title: str, embed=False):
@@ -68,7 +70,8 @@ async def article_revision(ctx: lightbulb.Context):
     page = wiki.page(article_title)
     article_revision_id = page.revision_id
     url = _make_url(f"{article_title}?oldid={article_revision_id}")
-    out = f"The revision ID for the page `{article_title}` is `{article_revision_id}`, available permanently at {url}."
+    out = (f"The revision ID for the page `{article_title}` is "
+           f"`{article_revision_id}`, available permanently at {url}.")
     await ctx.respond(out)
 
 
