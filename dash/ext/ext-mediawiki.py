@@ -9,8 +9,7 @@ MEDIAWIKI_BASE_URL = os.environ["MEDIAWIKI_BASE_URL"]
 plugin = lightbulb.Plugin("MediaWiki")
 wiki = MediaWiki(
     url=MEDIAWIKI_API,
-    user_agent=
-    "Dash2 v0.3.1 via pymediawiki: https://github.com/tomodachi94/dash2 ")
+    user_agent = "Dash2 v0.3.1 via pymediawiki: https://github.com/tomodachi94/dash2 ")
 
 
 def _make_url(title: str, embed=False):
@@ -44,7 +43,7 @@ async def article_links(ctx: lightbulb.Context):
     links = page.links
     out = []
     for item in links:
-        item = _make_url(item, embed=embed)
+        item = _make_url(item, embed=ctx.options.show_embeds)
         out.append(item)
     # paginated = lightbulb.utils.pag.Paginator
     # for item in out:
