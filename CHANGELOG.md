@@ -5,6 +5,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [unreleased]
+
+- Move `dash/main.py` to `dash/__main__.py`, for potential compatibility with Zipapp or other methods of bundling.
+
 ## v0.4.0
 
 - Implement `article` command group (#12, Tomodachi94)

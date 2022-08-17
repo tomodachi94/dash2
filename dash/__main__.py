@@ -1,3 +1,7 @@
+"""
+Core bot code. Loads in extensions and initializes bot instance.
+"""
+
 import dotenv
 import os
 

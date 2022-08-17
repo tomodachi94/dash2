@@ -29,7 +29,7 @@ pip install -r requirements.txt
 And, finally, run this to run the bot:
 
 ```bash
-python dash/main.py
+python dash/__main__.py
 ```
 
 ## Development

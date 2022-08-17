@@ -7,7 +7,7 @@ PYTHON_BINARY := "./.venv/bin/python"
 PIP_BINARY := "./.venv/bin/pip"
 
 start:
-	python3 ./dash/main.py
+	python3 ./dash/__main__.py
 
 init-virtualenv:
 	python3 -m venv ./.venv/

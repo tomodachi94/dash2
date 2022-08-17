@@ -1,1 +1,1 @@
-worker: python dash/main.py
+worker: python dash/__main__.py
