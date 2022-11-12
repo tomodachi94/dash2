@@ -1,0 +1,10 @@
+*.env
+*.md
+*.pyc
+CHANGELOG.md
+Containerfile
+LICENSE
+Procfile
+README.md
+justfile
+tmp

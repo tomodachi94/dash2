@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [unreleased]
 
+- Add Docker support.
 - Move `dash/main.py` to `dash/__main__.py`, for potential compatibility with Zipapp or other methods of bundling.
 
 ## v0.4.0
