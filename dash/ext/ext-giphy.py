@@ -17,7 +17,7 @@ async def bunny(ctx: lightbulb.Context):
     Sends a bunny GIF using the giphy API.
     """
     giphy = GiphyPublicAPI(GIPHY_TOKEN)
-    tag = 'rabbit'
+    tag = "rabbit"
 
     data = giphy.random(tag=tag, rating="g", limit=1)
     data = json.loads(data)

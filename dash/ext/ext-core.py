@@ -10,10 +10,12 @@ async def about(ctx):
     """
     Returns information about the bot.
     """
-    await ctx.respond("""
+    await ctx.respond(
+        """
     Dash is a bot for the FTB Wiki's Discord.
     https://github.com/Tomodachi94/dash2
-    """)
+    """
+    )
 
 
 def load(bot):

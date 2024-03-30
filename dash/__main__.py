@@ -7,6 +7,7 @@ import os
 
 import lightbulb
 
+
 def main():
     # environment
     dotenv.load_dotenv()

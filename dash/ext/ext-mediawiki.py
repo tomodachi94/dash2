@@ -9,8 +9,9 @@ MEDIAWIKI_BASE_URL = os.environ["MEDIAWIKI_BASE_URL"]
 plugin = lightbulb.Plugin("MediaWiki")
 wiki = MediaWiki(
     url=MEDIAWIKI_API,
-    user_agent=("Dash2 v0.3.1 via pymediawiki: "
-                "https://github.com/tomodachi94/dash2")
+    user_agent=(
+        "Dash2 v0.3.1 via pymediawiki: " "https://github.com/tomodachi94/dash2"
+    ),
 )
 
 
@@ -56,13 +57,15 @@ async def article(ctx: lightbulb.Context) -> None:
 #     await ctx.respond(out)
 #
 
+
 @article.child
 @lightbulb.option("article_title", "The title of the target page.")
 @lightbulb.option(
     "show_embeds",
     "Toggle showing embeds. Disabled by default to prevent chat spam.",
     required=False,
-    default=False)
+    default=False,
+)
 @lightbulb.command("revision", "Retrieves a page's current revision ID.")
 @lightbulb.implements(lightbulb.SlashSubCommand)
 async def article_revision(ctx: lightbulb.Context):
@@ -70,8 +73,10 @@ async def article_revision(ctx: lightbulb.Context):
     page = wiki.page(article_title)
     article_revision_id = page.revision_id
     url = _make_url(f"{article_title}?oldid={article_revision_id}")
-    out = (f"The revision ID for the page `{article_title}` is "
-           f"`{article_revision_id}`, available permanently at {url}.")
+    out = (
+        f"The revision ID for the page `{article_title}` is "
+        f"`{article_revision_id}`, available permanently at {url}."
+    )
     await ctx.respond(out)
 
 
@@ -80,11 +85,14 @@ async def article_revision(ctx: lightbulb.Context):
     "show_embeds",
     "Toggle showing embeds. Disabled by default to prevent chat spam.",
     required=False,
-    default=False)
-@lightbulb.option("number",
-                  "The amount of random articles to retrieve. Defaults to 1.",
-                  type=int,
-                  default=1)
+    default=False,
+)
+@lightbulb.option(
+    "number",
+    "The amount of random articles to retrieve. Defaults to 1.",
+    type=int,
+    default=1,
+)
 @lightbulb.command("random", "Shows a random article.")
 @lightbulb.implements(lightbulb.SlashSubCommand)
 async def article_random(ctx: lightbulb.Context):
@@ -99,8 +107,7 @@ async def article_random(ctx: lightbulb.Context):
             item = _make_url(item, show_embeds)
             out.append(item)
 
-        out = "\n".join(
-            out)  # converts the list above into a newline-delimited string
+        out = "\n".join(out)  # converts the list above into a newline-delimited string
     else:
         out = articles
         out = _make_url(out, show_embeds)
