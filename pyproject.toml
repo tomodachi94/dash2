@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "dash"
+version = "0.4.1"
+description = "A cleanroom rewrite of Dash in Hikari."
+authors = ["Tomo <68489118+Tomodachi94@users.noreply.github.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+python-dotenv = "^1.0.1"
+ezgiphy = "^0.0.4"
+pymediawiki = "^0.7.4"
+hikari-lightbulb = "^2.3.5"
+
+[tool.poetry.scripts]
+dash = "dash.__main__:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -1,4 +1,0 @@
-hikari-lightbulb
-python-dotenv
-ezgiphy
-pymediawiki
