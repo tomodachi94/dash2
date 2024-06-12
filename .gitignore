@@ -135,3 +135,5 @@ dmypy.json
 result/
 # Direnv
 .direnv/
+# git-hooks.nix
+.pre-commit-config.yaml

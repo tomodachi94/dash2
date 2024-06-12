@@ -4,13 +4,18 @@
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+    };
     poetry2nix = {
       url = "github:nix-community/poetry2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, flake-utils, poetry2nix }:
+  outputs = { self, nixpkgs, pre-commit-hooks, flake-utils, poetry2nix }:
     flake-utils.lib.eachDefaultSystem
       (system:
         let
@@ -55,7 +60,8 @@
                 treefmt
                 nixpkgs-fmt
                 statix
-              ];
+              ] ++ self.checks.${system}.pre-commit-check.enabledPackages;
+              inherit (self.checks.${system}.pre-commit-check) shellHook;
             };
             ci = pkgs.mkShellNoCC {
               packages = with pkgs; [
@@ -64,6 +70,19 @@
                 nixpkgs-fmt
                 treefmt
               ];
+            };
+          };
+
+          checks = {
+            pre-commit-check = pre-commit-hooks.lib.${system}.run {
+              src = ./.;
+              hooks = {
+                just-ci = {
+                  name = "just ci";
+                  entry = "just ci";
+				  pass_filenames = false;
+                };
+              };
             };
           };
         });
