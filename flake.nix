@@ -46,7 +46,7 @@
           };
 
           devShells = {
-            default = pkgs.mkShell {
+            default = pkgs.mkShellNoCC {
               inputsFrom = [ self.packages.${system}.dash ];
               packages = with pkgs; [
                 just
@@ -56,7 +56,7 @@
                 statix
               ];
             };
-            ci = pkgs.mkShell {
+            ci = pkgs.mkShellNoCC {
               packages = with pkgs; [
                 just
                 ruff
