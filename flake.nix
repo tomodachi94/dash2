@@ -11,44 +11,46 @@
   };
 
   outputs = { self, nixpkgs, flake-utils, poetry2nix }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
-        pkgs = nixpkgs.legacyPackages.${system};
-        inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication defaultPoetryOverrides;
-        # See https://github.com/nix-community/poetry2nix/blob/master/docs/edgecases.md#modulenotfounderror-no-module-named-packagename
-        dashOverrides = defaultPoetryOverrides.extend (self: super: {
-          ezgiphy = super.ezgiphy.overridePythonAttrs (oldAttrs: {
-            propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
+    flake-utils.lib.eachDefaultSystem
+      (system:
+        let
+          # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
+          pkgs = nixpkgs.legacyPackages.${system};
+          inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication defaultPoetryOverrides;
+          # See https://github.com/nix-community/poetry2nix/blob/master/docs/edgecases.md#modulenotfounderror-no-module-named-packagename
+          dashOverrides = defaultPoetryOverrides.extend (self: super: {
+            ezgiphy = super.ezgiphy.overridePythonAttrs (oldAttrs: {
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
+            });
+            pymediawiki = super.pymediawiki.overridePythonAttrs (oldAttrs: {
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
+            });
           });
-          pymediawiki = super.pymediawiki.overridePythonAttrs (oldAttrs: {
-            propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
-          });
+        in
+        {
+          packages = {
+            dash = mkPoetryApplication {
+              projectDir = self;
+              overrides = dashOverrides;
+              meta.mainProgram = "dash";
+            };
+            default = self.packages.${system}.dash;
+            dash-container = pkgs.dockerTools.streamLayeredImage {
+              name = "io.github.tomodachi94.dash2";
+              config.Cmd = [ "${self.packages.${system}.dash}/bin/dash" ];
+            };
+
+          };
+
+          devShells.default = pkgs.mkShell {
+            inputsFrom = [ self.packages.${system}.dash ];
+            packages = with pkgs; [
+              just
+              poetry
+              black
+              nixpkgs-fmt
+              statix
+            ];
+          };
         });
-      in
-      {
-        packages = {
-          dash = mkPoetryApplication {
-            projectDir = self;
-            overrides = dashOverrides;
-          };
-          default = self.packages.${system}.dash;
-          dash-container = pkgs.dockerTools.streamLayeredImage {
-            name = "io.github.tomodachi94.dash2";
-            config.Cmd = [ "${self.packages.${system}.dash}/bin/dash" ];
-          };
-
-        };
-
-        devShells.default = pkgs.mkShell {
-          inputsFrom = [ self.packages.${system}.dash ];
-          packages = with pkgs; [
-            just
-            poetry
-            black
-            nixpkgs-fmt
-            statix
-          ];
-        };
-      });
 }
