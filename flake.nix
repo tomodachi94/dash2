@@ -47,7 +47,7 @@
             packages = with pkgs; [
               just
               poetry
-              black
+              ruff
               nixpkgs-fmt
               statix
             ];
