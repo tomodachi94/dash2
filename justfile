@@ -10,7 +10,9 @@ build-container:
 	nix build .#dash-container
 
 format:
-	#!/usr/bin/env nix
-	#! nix shell
-	black
+	black $(git ls-files '*.py')
 	nixpkgs-fmt $(git ls-files '*.nix')
+
+wipe-slash-commands:
+	python3 ./.github/scripts/wipe_slash_commands.py
+
