@@ -10,13 +10,15 @@ build-container:
 	nix build .#dash-container
 
 format:
-	ruff format $(git ls-files '*.py')
-	nixpkgs-fmt $(git ls-files '*.nix')
+	treefmt
 
 check:
 	ruff check $(git ls-files '*.py')
 
+check-formatting:
+	treefmt --fail-on-change
+
 wipe-slash-commands:
 	python3 ./.github/scripts/wipe_slash_commands.py
 
-ci: check
+ci: check check-formatting

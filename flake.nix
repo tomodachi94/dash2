@@ -52,6 +52,7 @@
                 just
                 poetry
                 ruff
+                treefmt
                 nixpkgs-fmt
                 statix
               ];
@@ -60,6 +61,8 @@
               packages = with pkgs; [
                 just
                 ruff
+                nixpkgs-fmt
+                treefmt
               ];
             };
           };

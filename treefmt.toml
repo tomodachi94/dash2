@@ -1,0 +1,10 @@
+# One CLI to format the code tree - https://github.com/numtide/treefmt
+
+[formatter.ruff]
+command = "ruff"
+options = [ "format" ]
+includes = [ "*.py" ]
+
+[formatter.nixpkgs-fmt]
+command = "nixpkgs-fmt"
+includes = [ "*.nix" ]
