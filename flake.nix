@@ -45,15 +45,23 @@
 
           };
 
-          devShells.default = pkgs.mkShell {
-            inputsFrom = [ self.packages.${system}.dash ];
-            packages = with pkgs; [
-              just
-              poetry
-              ruff
-              nixpkgs-fmt
-              statix
-            ];
+          devShells = {
+            default = pkgs.mkShell {
+              inputsFrom = [ self.packages.${system}.dash ];
+              packages = with pkgs; [
+                just
+                poetry
+                ruff
+                nixpkgs-fmt
+                statix
+              ];
+            };
+            ci = pkgs.mkShell {
+              packages = with pkgs; [
+                just
+                ruff
+              ];
+            };
           };
         });
 }

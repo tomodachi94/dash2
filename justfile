@@ -19,3 +19,4 @@ check:
 wipe-slash-commands:
 	python3 ./.github/scripts/wipe_slash_commands.py
 
+ci: check
