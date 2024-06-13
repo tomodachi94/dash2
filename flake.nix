@@ -30,9 +30,6 @@
             pymediawiki = super.pymediawiki.overridePythonAttrs (oldAttrs: {
               propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
             });
-            # Override some packages to take advantage of caching
-            aiohttp = pkgs.python3Packages.aiohttp;
-            hikari = pkgs.python3Packages.hikari;
           });
         in
         {
