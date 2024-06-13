@@ -2,15 +2,12 @@
 Core bot code. Loads in extensions and initializes bot instance.
 """
 
-import dotenv
 import os
 
 import lightbulb
 
 
 def main():
-    # environment
-    dotenv.load_dotenv()
     DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
     DISCORD_PREFIX = os.environ.get("DISCORD_PREFIX", "_")
 
