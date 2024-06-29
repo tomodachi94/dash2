@@ -5,8 +5,8 @@ import lightbulb
 
 from dash import __version__
 
-MEDIAWIKI_API = os.environ["MEDIAWIKI_API"]
-MEDIAWIKI_BASE_URL = os.environ["MEDIAWIKI_BASE_URL"]
+MEDIAWIKI_API = os.getenv("MEDIAWIKI_API", "https://ftb.fandom.com/api.php")
+MEDIAWIKI_BASE_URL = os.getenv("MEDIAWIKI_BASE_URL", "https://ftb.fandom.com/wiki/")
 
 loader = lightbulb.Loader()
 group = loader.command(lightbulb.Group("article", "Get information about an article."))
