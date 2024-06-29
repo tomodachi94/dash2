@@ -25,10 +25,11 @@
           # See https://github.com/nix-community/poetry2nix/blob/master/docs/edgecases.md#modulenotfounderror-no-module-named-packagename
           dashOverrides = defaultPoetryOverrides.extend (self: super: {
             ezgiphy = super.ezgiphy.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
             });
             pymediawiki = super.pymediawiki.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ pkgs.python3Packages.setuptools ];
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
+            });
             });
           });
         in
