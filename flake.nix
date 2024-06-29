@@ -88,5 +88,48 @@
               };
             };
           };
-        });
+        }) // {
+      nixosModules.default = { config, lib, pkgs, dash2, ... }:
+        {
+          options.services.dash = {
+            enable = lib.mkEnableOption "Dash, a bot for the FTB Wiki Discord (github.com/tomodachi94/dash2)";
+            package = lib.mkPackageOption dash2.packages.${pkgs.system} "dash" { };
+
+            mediawiki-api-url = lib.mkOption {
+              type = lib.types.str;
+              default = "https://ftb.fandom.com/api.php";
+            };
+
+            mediawiki-base-url = lib.mkOption {
+              type = lib.types.str;
+              default = "https://ftb.fandom.com/wiki/";
+            };
+
+            secretsFile = lib.mkOption {
+              type = lib.types.path;
+              default = null;
+              example = "/run/secrets/dash";
+              description = ''
+                Secrets to run Dash.
+              '';
+            };
+          };
+
+          config = lib.mkIf config.services.dash.enable {
+            systemd.services.dash = {
+              description = "Dash, a bot for the FTB Wiki Discord (github.com/tomodachi94/dash2)";
+              after = [ "network.target" ];
+              wantedBy = [ "multi-user.target" ];
+              serviceConfig = {
+                ExecStart = lib.getExe config.services.dash.package;
+                Environment = ''
+                  				  MEDIAWIKI_API=${config.services.dash.mediawiki-api-url}
+                  				  MEDIAWIKI_BASE_URL=${config.services.dash.mediawiki-base-url}
+                '';
+                EnvironmentFile = config.services.dash.secretsFile;
+              };
+            };
+          };
+        };
+    };
 }
