@@ -8,7 +8,9 @@ from dash import __version__
 MEDIAWIKI_API = os.environ["MEDIAWIKI_API"]
 MEDIAWIKI_BASE_URL = os.environ["MEDIAWIKI_BASE_URL"]
 
-plugin = lightbulb.Plugin("MediaWiki")
+loader = lightbulb.Loader()
+group = loader.command(lightbulb.Group("article", "Get information about an article."))
+
 wiki = MediaWiki(
     url=MEDIAWIKI_API,
     user_agent=(
@@ -24,13 +26,6 @@ def _make_url(title: str, embed=False):
         url = "<" + url + ">"
 
     return url
-
-
-@plugin.command
-@lightbulb.command("article", "Get information about an article.")
-@lightbulb.implements(lightbulb.SlashCommandGroup)
-async def article(ctx: lightbulb.Context) -> None:
-    pass
 
 
 # @article.child
@@ -60,66 +55,66 @@ async def article(ctx: lightbulb.Context) -> None:
 #
 
 
-@article.child
-@lightbulb.option("article_title", "The title of the target page.")
-@lightbulb.option(
+showEmbedsOption = lightbulb.boolean(
     "show_embeds",
     "Toggle showing embeds. Disabled by default to prevent chat spam.",
-    required=False,
     default=False,
 )
-@lightbulb.command("revision", "Retrieves a page's current revision ID.")
-@lightbulb.implements(lightbulb.SlashSubCommand)
-async def article_revision(ctx: lightbulb.Context):
-    article_title = ctx.options.article_title
-    page = wiki.page(article_title)
-    article_revision_id = page.revision_id
-    url = _make_url(f"{article_title}?oldid={article_revision_id}")
-    out = (
-        f"The revision ID for the page `{article_title}` is "
-        f"`{article_revision_id}`, available permanently at {url}."
+
+
+@group.register
+class ArticleRevisionCommand(
+    lightbulb.SlashCommand,
+    name="revision",
+    description="Retrieves a page's current revision ID.",
+):
+    article_title = lightbulb.string("article_title", "The title of the target page.")
+    show_embeds = showEmbedsOption
+
+    @lightbulb.invoke
+    async def invoke(self, ctx: lightbulb.Context) -> None:
+        article_title = self.article_title
+        page = wiki.page(article_title)
+        article_revision_id = page.revision_id
+        url = _make_url(
+            f"{article_title}?oldid={article_revision_id}", self.show_embeds
+        )
+        out = (
+            f"The revision ID for the page `{article_title}` is "
+            f"`{article_revision_id}`, available permanently at {url}."
+        )
+        await ctx.respond(out)
+
+
+@group.register
+class ArticleRandomCommand(
+    lightbulb.SlashCommand,
+    name="random",
+    description="Shows a random article.",
+):
+    number = lightbulb.integer(
+        "number", "The amount of random articles to retrieve. Defaults to 1."
     )
-    await ctx.respond(out)
+    show_embeds = showEmbedsOption
 
+    @lightbulb.invoke
+    async def invoke(self, ctx: lightbulb.Context):
+        random_amount = self.number
+        show_embeds = self.show_embeds
 
-@article.child
-@lightbulb.option(
-    "show_embeds",
-    "Toggle showing embeds. Disabled by default to prevent chat spam.",
-    required=False,
-    default=False,
-)
-@lightbulb.option(
-    "number",
-    "The amount of random articles to retrieve. Defaults to 1.",
-    type=int,
-    default=1,
-)
-@lightbulb.command("random", "Shows a random article.")
-@lightbulb.implements(lightbulb.SlashSubCommand)
-async def article_random(ctx: lightbulb.Context):
-    random_amount = ctx.options.number
-    show_embeds = ctx.options.show_embeds
+        articles = wiki.random(pages=random_amount)
 
-    articles = wiki.random(pages=random_amount)
+        if random_amount != 1:
+            out = []
+            for item in articles:
+                item = _make_url(item, show_embeds)
+                out.append(item)
 
-    if random_amount != 1:
-        out = []
-        for item in articles:
-            item = _make_url(item, show_embeds)
-            out.append(item)
+            out = "\n".join(
+                out
+            )  # converts the list above into a newline-delimited string
+        else:
+            out = articles
+            out = _make_url(out, show_embeds)
 
-        out = "\n".join(out)  # converts the list above into a newline-delimited string
-    else:
-        out = articles
-        out = _make_url(out, show_embeds)
-
-    await ctx.respond(out)
-
-
-def load(bot):
-    bot.add_plugin(plugin)
-
-
-def unload(bot):
-    bot.remove_plugin(plugin)
+        await ctx.respond(out)
