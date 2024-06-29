@@ -30,6 +30,11 @@
             pymediawiki = super.pymediawiki.overridePythonAttrs (oldAttrs: {
               propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
             });
+            svcs = super.svcs.overridePythonAttrs (oldAttrs: {
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.hatchling self.pythonPackages.hatch-fancy-pypi-readme ];
+            });
+            hikari-lightbulb = super.hikari-lightbulb.overridePythonAttrs (oldAttrs: {
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.flit ];
             });
           });
         in
@@ -78,7 +83,7 @@
                 just-ci = {
                   name = "just ci";
                   entry = "just ci";
-				  pass_filenames = false;
+                  pass_filenames = false;
                 };
               };
             };
