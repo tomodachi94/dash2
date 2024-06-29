@@ -48,12 +48,6 @@ python3 -m dash
 
 The bot is configured entirely through environment variables. Sample values are provided in `extras/example.env`.
 
-### Command prefix
-
-`DISCORD_PREFIX` controls what the prefix of the commands is. It defaults to `_`.
-
-**Example value**: `?`
-
 ### MediaWiki instance
 
 `MEDIAWIKI_API` and `MEDIAWIKI_BASE_URL` control the API URL and the MediaWiki base URL for the MediaWiki extension.

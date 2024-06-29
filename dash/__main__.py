@@ -9,7 +9,6 @@ import lightbulb
 
 def main():
     DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
-    DISCORD_PREFIX = os.environ.get("DISCORD_PREFIX", "_")
 
     DASH_PATH = os.path.realpath(__file__)
     DASH_PATH = os.path.dirname(DASH_PATH)
@@ -17,7 +16,7 @@ def main():
     print("Dash path: ", DASH_PATH)
     print("Dash ext path: ", DASH_EXT_PATH)
 
-    bot = lightbulb.BotApp(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
+    bot = lightbulb.BotApp(token=DISCORD_TOKEN, logs="INFO")
 
     bot.load_extensions_from(DASH_EXT_PATH)
 

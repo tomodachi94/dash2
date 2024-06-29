@@ -11,7 +11,7 @@ GIPHY_TOKEN = os.environ["GIPHY_TOKEN"]
 
 @plugin.command()
 @lightbulb.command("bunny", "Sends a bunny GIF.")
-@lightbulb.implements(lightbulb.PrefixCommand, lightbulb.SlashCommand)
+@lightbulb.implements(lightbulb.SlashCommand)
 async def bunny(ctx: lightbulb.Context):
     """
     Sends a bunny GIF using the giphy API.
