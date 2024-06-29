@@ -1,24 +1,25 @@
+#!/usr/bin/env python3
 """
 Core bot code. Loads in extensions and initializes bot instance.
 """
 
 import os
 
+import hikari
 import lightbulb
+
+import dash.ext
+
+DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
+bot = hikari.GatewayBot(DISCORD_TOKEN)
+client = lightbulb.client_from_app(bot)
+
+
+@bot.listen(hikari.StartingEvent)
+async def on_starting(_: hikari.StartingEvent) -> None:
+    await client.load_extensions_from_package(dash.ext)
+    await client.start()
 
 
 def main():
-    DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
-    DISCORD_PREFIX = os.environ.get("DISCORD_PREFIX", "_")
-
-    DASH_PATH = os.path.realpath(__file__)
-    DASH_PATH = os.path.dirname(DASH_PATH)
-    DASH_EXT_PATH = os.path.join(DASH_PATH, "ext")
-    print("Dash path: ", DASH_PATH)
-    print("Dash ext path: ", DASH_EXT_PATH)
-
-    bot = lightbulb.BotApp(token=DISCORD_TOKEN, prefix=DISCORD_PREFIX, logs="INFO")
-
-    bot.load_extensions_from(DASH_EXT_PATH)
-
     bot.run()
