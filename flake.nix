@@ -123,10 +123,24 @@
               serviceConfig = {
                 ExecStart = lib.getExe config.services.dash.package;
                 Environment = ''
-                  				  MEDIAWIKI_API=${config.services.dash.mediawiki-api-url}
-                  				  MEDIAWIKI_BASE_URL=${config.services.dash.mediawiki-base-url}
+                  MEDIAWIKI_API=${config.services.dash.mediawiki-api-url}
+                  MEDIAWIKI_BASE_URL=${config.services.dash.mediawiki-base-url}
                 '';
                 EnvironmentFile = config.services.dash.secretsFile;
+                DynamicUser = true;
+                NoNewPrivileges = true;
+                ProtectKernelLogs = true;
+                ProtectKernelModules = true;
+                ProtectKernelTunables = true;
+                DevicePolicy = "closed";
+                ProtectHome = true;
+                ProtectControlGroups = true;
+                RestrictNamespaces = true;
+                RestrictRealtime = true;
+                RestrictSUIDSGID = true;
+                MemoryDenyWriteExecute = true;
+                LockPersonality = true;
+                ProtectHostname = true;
               };
             };
           };
