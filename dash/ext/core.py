@@ -1,26 +1,17 @@
 import lightbulb
 
-plugin = lightbulb.Plugin("Core")
+loader = lightbulb.Loader()
 
 
-@plugin.command()
-@lightbulb.command("about", "Tells you about the bot.")
-@lightbulb.implements(lightbulb.SlashCommand)
-async def about(ctx):
-    """
-    Returns information about the bot.
-    """
-    await ctx.respond(
-        """
+@loader.command
+class AboutCommand(
+    lightbulb.SlashCommand, name="about", description="Tells you about the bot."
+):
+    @lightbulb.invoke
+    async def invoke(self, ctx: lightbulb.Context) -> None:
+        await ctx.respond(
+            """
     Dash is a bot for the FTB Wiki's Discord.
     https://github.com/Tomodachi94/dash2
     """
-    )
-
-
-def load(bot):
-    bot.add_plugin(plugin)
-
-
-def unload(bot):
-    bot.remove_plugin(plugin)
+        )
