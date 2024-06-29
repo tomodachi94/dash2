@@ -386,13 +386,13 @@ files = [
 
 [[package]]
 name = "hikari"
-version = "2.0.0.dev125"
+version = "2.0.0.dev126"
 description = "A sane Discord API for Python 3 built on asyncio and good intentions"
 optional = false
 python-versions = "<3.13,>=3.8.0"
 files = [
-    {file = "hikari-2.0.0.dev125-py3-none-any.whl", hash = "sha256:4c139e7f81089dc234e21d81177ca7d0d97bba974ac0de5a03b3e7e0ac0c6541"},
-    {file = "hikari-2.0.0.dev125.tar.gz", hash = "sha256:f9677386b77f58fcb04d1b91cd6f4f5b306014fb952b11615ef0ca3430296953"},
+    {file = "hikari-2.0.0.dev126-py3-none-any.whl", hash = "sha256:cdbe0916dcfdc8e2dee16f89731a20f66e27e01914a549e06b06c74261141d31"},
+    {file = "hikari-2.0.0.dev126.tar.gz", hash = "sha256:1ace1bc6d3a634a97d6d6aa3a8bc56f1cf3ad02caae4a9860699247b52e650a5"},
 ]
 
 [package.dependencies]
@@ -407,20 +407,28 @@ speedups = ["aiohttp[speedups] (>=3.9,<4.0)", "ciso8601 (>=2.3,<3.0)", "orjson (
 
 [[package]]
 name = "hikari-lightbulb"
-version = "2.3.5"
-description = "A simple to use command handler for Hikari"
+version = "3.0.0a3"
+description = "A simple-to-use command handler for Hikari."
 optional = false
-python-versions = ">=3.8.0,<3.13"
+python-versions = "<3.13,>=3.10.0"
 files = [
-    {file = "hikari-lightbulb-2.3.5.tar.gz", hash = "sha256:7ae9e75f35f3f91f84455d068e42855e27c8588ace087a4ab3fbae9eb28ad8aa"},
-    {file = "hikari_lightbulb-2.3.5-py3-none-any.whl", hash = "sha256:8c2bcb9246b66eae670c914ea1ec7a821da15d4981ec6902e7c7148d05907a78"},
+    {file = "hikari_lightbulb-3.0.0a3-py3-none-any.whl", hash = "sha256:b1027fa228d9b67aea51900d7663de35cb7252c97d6e6d1ee8dad15fe87f513a"},
+    {file = "hikari_lightbulb-3.0.0a3.tar.gz", hash = "sha256:cf782041b393798f7c65672f1fa8bef061288c441b46b598659c9074f0c712a3"},
 ]
 
 [package.dependencies]
-hikari = ">=2.0.0.dev122,<2.1.0"
+hikari = ">=2.0.0.dev126,<3"
+svcs = ">=23.21.0,<24"
 
 [package.extras]
-crontrigger = ["croniter (>=2.0.1,<2.1.0)", "types-croniter (>=2.0.0,<2.1.0)"]
+dev = ["nox (==2024.4.15)"]
+dev-changelog = ["towncrier (==23.11.0)"]
+dev-docs = ["furo (==2024.5.6)", "myst-parser (>=3.0.1,<4)", "sphinx (>=7.3.7,<8)", "sphinx-copybutton (>=0.5.2,<1)", "sphinx-inline-tabs (==2023.4.21)", "sphinx-notfound-page (>=1.0.2,<2)", "sphinx-prompt (>=1.8.0,<2)", "sphinx_design (>=0.6.0,<1)", "sphinxext-opengraph (>=0.9.1,<1)"]
+dev-format = ["ruff (>=0.4.8,<1)"]
+dev-release = ["flit (==3.9.0)"]
+dev-slotscheck = ["slotscheck (>=0.19.0,<1)"]
+dev-typecheck = ["pyright (>=1.1.367,<2)"]
+localization = ["polib (>=1.2.0,<2)", "types-polib (>=1.2.0.20240327,<2)"]
 
 [[package]]
 name = "idna"
@@ -580,14 +588,34 @@ files = [
 ]
 
 [[package]]
+name = "svcs"
+version = "23.21.0"
+description = "A Flexible Service Locator"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "svcs-23.21.0-py3-none-any.whl", hash = "sha256:5f7c0cab2d022db627abad1f89d5c8a82401cd27bd9b55a701099970192b1e8b"},
+    {file = "svcs-23.21.0.tar.gz", hash = "sha256:b56db0b55c1b08b7834fba91ac7a30c0d4a238453ab660bf39de9abcb2f21b31"},
+]
+
+[package.dependencies]
+attrs = ">=21.3.0"
+
+[package.extras]
+dev = ["httpx", "svcs[tests,typing]", "tox (>4)"]
+docs = ["aiohttp", "fastapi", "flask", "furo (>=2023.8.17)", "httpx", "myst-parser", "pyramid", "pytest", "sphinx (>=7.2.2)", "sphinx-copybutton", "sphinx-design", "sphinx-notfound-page", "sphinxext-opengraph", "sqlalchemy", "starlette", "sybil"]
+tests = ["pytest", "pytest-asyncio", "sybil", "typing-extensions"]
+typing = ["aiohttp", "fastapi", "flask", "mypy (>=1.4)", "pyramid", "starlette"]
+
+[[package]]
 name = "urllib3"
-version = "2.2.1"
+version = "2.2.2"
 description = "HTTP library with thread-safe connection pooling, file post, and more."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "urllib3-2.2.1-py3-none-any.whl", hash = "sha256:450b20ec296a467077128bff42b73080516e71b56ff59a60a02bef2232c4fa9d"},
-    {file = "urllib3-2.2.1.tar.gz", hash = "sha256:d0570876c61ab9e520d776c38acbbb5b05a776d3f9ff98a5c8fd5162a444cf19"},
+    {file = "urllib3-2.2.2-py3-none-any.whl", hash = "sha256:a448b2f64d686155468037e1ace9f2d2199776e17f0a46610480d311f73e3472"},
+    {file = "urllib3-2.2.2.tar.gz", hash = "sha256:dd505485549a7a552833da5e6063639d0d177c04f23bc3864e41e5dc5f612168"},
 ]
 
 [package.extras]
@@ -702,4 +730,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "0e2be058a38c428f6503db2cc04d6dad87e33773f7de85bd01998576cb6d7285"
+content-hash = "e7a461e4a196b11d27c8a1bf4090b2959006bd0e634599acbcf0681925ad341d"
