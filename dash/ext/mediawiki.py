@@ -100,11 +100,13 @@ class ArticleRandomCommand(
                 item = _make_url(item, show_embeds)
                 out.append(item)
 
-            out = "\n".join(
+            article_links = "\n".join(
                 out
             )  # converts the list above into a newline-delimited string
         else:
-            out = articles
-            out = _make_url(out, show_embeds)
+            # pymediawiki.MediaWiki.random provides one variable (not in a list) if the random_amount is 1,
+            # so disabling type-checking is okay here.
+            out = articles  # type: ignore
+            article_links = _make_url(out, show_embeds)  # type: ignore
 
-        await ctx.respond(out)
+        await ctx.respond(article_links)
