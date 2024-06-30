@@ -14,6 +14,7 @@ format:
 
 check:
 	ruff check $(git ls-files '*.py')
+	poetry install && mypy dash
 
 check-formatting:
 	treefmt --fail-on-change

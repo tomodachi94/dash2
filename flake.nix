@@ -70,6 +70,7 @@
               packages = with pkgs; [
                 just
                 ruff
+                mypy
                 nixpkgs-fmt
                 treefmt
               ];
