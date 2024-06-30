@@ -13,3 +13,7 @@ includes = ["*.nix"]
 command = "taplo"
 options = ["fmt"]
 includes = ["*.toml"]
+
+[formatter.yamlfmt]
+command = "yamlfmt"
+includes = ["*.yaml", "*.yml"]
