@@ -124,7 +124,8 @@
 
           config = lib.mkIf config.services.dash.enable {
             systemd.services.dash = {
-              description = "Dash, a bot for the FTB Wiki Discord (github.com/tomodachi94/dash2)";
+              description = "Dash, a bot for the FTB Wiki Discord";
+              documentation = [ "https://github.com/tomodachi94/dash2" ];
               after = [ "network.target" ];
               wantedBy = [ "multi-user.target" ];
               environment = {

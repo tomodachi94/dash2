@@ -62,6 +62,52 @@ Ensure you [have a Discord bot token](https://github.com/reactiflux/discord-irc/
 
 Then, [obtain a Giphy API token](https://developers.giphy.com/docs/api) and set it in the `GIPHY_TOKEN` variable.
 
+## NixOS module
+
+A NixOS module is available in `flake.nix`, from the `nixosModules.default` output.
+
+### Example usage
+
+In your `flake.nix`:
+
+```nix
+inputs = {
+  nixpkgs = {
+    url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  };
+  dash2 = {
+    url = "github:tomodachi94/dash2";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+  # -- snip --
+};
+
+# -- snip --
+
+outputs = { nixpkgs, dash2, ... }: {
+  # -- snip --
+  nixosConfigurations.my-machine = nixpkgs.lib.nixosSystem {
+    modules = [
+      # -- snip --
+      dash2.nixosModules.default
+      # -- snip --
+      # NOTE: Make sure your configuration.nix is loaded somewhere.
+    ];
+  };
+}
+```
+
+And then, in your `configuration.nix`:
+
+```nix
+{
+  services.dash = {
+    enable = true;
+    secretsFile = "/run/secrets/dash"; # See ./extras/example.env for an example of the required format.
+  };
+}
+```
+
 ## Development
 
 Install Nix, then use `nix develop`. If you have `direnv` and `nix-direnv` installed, you can use `direnv allow` and have the shell environment activated automatically.
