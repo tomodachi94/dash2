@@ -81,6 +81,7 @@
               src = ./.;
               hooks = {
                 just-ci = {
+                  enable = true;
                   name = "just ci";
                   entry = "just ci";
                   pass_filenames = false;
