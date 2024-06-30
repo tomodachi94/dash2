@@ -132,7 +132,7 @@ dmypy.json
 .vscode
 .idea/
 # Nix
-result/
+result
 # Direnv
 .direnv/
 # git-hooks.nix
