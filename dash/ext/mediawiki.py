@@ -1,22 +1,12 @@
 import os
-from mediawiki import MediaWiki
 
+import mediawiki
 import lightbulb
 
-from dash import __version__
-
-MEDIAWIKI_API = os.getenv("MEDIAWIKI_API", "https://ftb.fandom.com/api.php")
 MEDIAWIKI_BASE_URL = os.getenv("MEDIAWIKI_BASE_URL", "https://ftb.fandom.com/wiki/")
 
 loader = lightbulb.Loader()
 group = loader.command(lightbulb.Group("article", "Get information about an article."))
-
-wiki = MediaWiki(
-    url=MEDIAWIKI_API,
-    user_agent=(
-        f"Dash2 v{__version__} via pymediawiki: " "https://github.com/tomodachi94/dash2"
-    ),
-)
 
 
 def _make_url(title: str, embed=False):
@@ -72,7 +62,7 @@ class ArticleRevisionCommand(
     show_embeds = showEmbedsOption
 
     @lightbulb.invoke
-    async def invoke(self, ctx: lightbulb.Context) -> None:
+    async def invoke(self, ctx: lightbulb.Context, wiki: mediawiki.MediaWiki) -> None:
         article_title = self.article_title
         page = wiki.page(article_title)
         article_revision_id = page.revision_id
@@ -98,7 +88,7 @@ class ArticleRandomCommand(
     show_embeds = showEmbedsOption
 
     @lightbulb.invoke
-    async def invoke(self, ctx: lightbulb.Context):
+    async def invoke(self, ctx: lightbulb.Context, wiki: mediawiki.MediaWiki):
         random_amount = self.number
         show_embeds = self.show_embeds
 
