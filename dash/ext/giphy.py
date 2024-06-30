@@ -1,5 +1,5 @@
-import os
 import json
+import os
 
 import lightbulb
 from ezgiphy import GiphyPublicAPI

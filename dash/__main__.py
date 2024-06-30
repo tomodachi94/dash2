@@ -7,7 +7,6 @@ import os
 
 import hikari
 import lightbulb
-
 import mediawiki
 
 import dash.ext

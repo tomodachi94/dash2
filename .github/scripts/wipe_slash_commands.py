@@ -5,8 +5,9 @@ in the Hikari Discord server: https://discord.gg/Jx4cNGG
 """
 
 import asyncio
-import hikari
 import os
+
+import hikari
 
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 DISCORD_APP_ID = int(os.environ["DISCORD_APP_ID"])

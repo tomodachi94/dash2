@@ -1,7 +1,7 @@
 import os
 
-import mediawiki
 import lightbulb
+import mediawiki
 
 MEDIAWIKI_BASE_URL = os.getenv("MEDIAWIKI_BASE_URL", "https://ftb.fandom.com/wiki/")
 
