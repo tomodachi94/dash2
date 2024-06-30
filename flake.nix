@@ -122,12 +122,12 @@
               description = "Dash, a bot for the FTB Wiki Discord (github.com/tomodachi94/dash2)";
               after = [ "network.target" ];
               wantedBy = [ "multi-user.target" ];
+              environment = {
+                MEDIAWIKI_API = config.services.dash.mediawiki-api-url;
+                MEDIAWIKI_BASE_URL = config.services.dash.mediawiki-base-url;
+              };
               serviceConfig = {
                 ExecStart = lib.getExe config.services.dash.package;
-                Environment = ''
-                  MEDIAWIKI_API=${config.services.dash.mediawiki-api-url}
-                  MEDIAWIKI_BASE_URL=${config.services.dash.mediawiki-base-url}
-                '';
                 EnvironmentFile = config.services.dash.secretsFile;
                 DynamicUser = true;
                 NoNewPrivileges = true;
