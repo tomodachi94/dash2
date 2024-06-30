@@ -45,7 +45,7 @@ def _make_url(title: str, embed=False):
 #
 
 
-showEmbedsOption = lightbulb.boolean(
+show_embeds_option = lightbulb.boolean(
     "show_embeds",
     "Toggle showing embeds. Disabled by default to prevent chat spam.",
     default=False,
@@ -59,7 +59,7 @@ class ArticleRevisionCommand(
     description="Retrieves a page's current revision ID.",
 ):
     article_title = lightbulb.string("article_title", "The title of the target page.")
-    show_embeds = showEmbedsOption
+    show_embeds = show_embeds_option
 
     @lightbulb.invoke
     async def invoke(self, ctx: lightbulb.Context, wiki: mediawiki.MediaWiki) -> None:
@@ -85,7 +85,7 @@ class ArticleRandomCommand(
     number = lightbulb.integer(
         "number", "The amount of random articles to retrieve. Defaults to 1."
     )
-    show_embeds = showEmbedsOption
+    show_embeds = show_embeds_option
 
     @lightbulb.invoke
     async def invoke(self, ctx: lightbulb.Context, wiki: mediawiki.MediaWiki):
