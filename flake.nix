@@ -71,6 +71,7 @@
             ci = pkgs.mkShellNoCC {
               packages = with pkgs; [
                 just
+                poetry
                 ruff
                 mypy
                 nixpkgs-fmt
