@@ -62,6 +62,7 @@
                 ruff
                 treefmt
                 nixpkgs-fmt
+                taplo
                 statix
               ] ++ self.checks.${system}.pre-commit-check.enabledPackages;
               inherit (self.checks.${system}.pre-commit-check) shellHook;
@@ -72,6 +73,7 @@
                 ruff
                 mypy
                 nixpkgs-fmt
+                taplo
                 treefmt
               ];
             };
