@@ -11,11 +11,15 @@ import mediawiki
 
 import dash.ext
 from dash import __version__
+from dash.i18n import __file__ as i18n_path
 
 DISCORD_TOKEN = os.environ["DISCORD_TOKEN"]
 MEDIAWIKI_API = os.getenv("MEDIAWIKI_API", "https://ftb.fandom.com/api.php")
 bot = hikari.GatewayBot(DISCORD_TOKEN)
-client = lightbulb.client_from_app(bot)
+gnu_gettext_provider = lightbulb.GnuLocalizationProvider(
+    "commands.po", os.path.dirname(i18n_path)
+)
+client = lightbulb.client_from_app(bot, localization_provider=gnu_gettext_provider)
 
 
 @bot.listen(hikari.StartingEvent)

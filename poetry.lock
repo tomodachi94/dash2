@@ -418,7 +418,9 @@ files = [
 
 [package.dependencies]
 hikari = ">=2.0.0.dev126,<3"
+polib = {version = ">=1.2.0,<2", optional = true, markers = "extra == \"localization\""}
 svcs = ">=23.21.0,<24"
+types-polib = {version = ">=1.2.0.20240327,<2", optional = true, markers = "extra == \"localization\""}
 
 [package.extras]
 crontrigger = ["croniter (>=2.0.7,<3)", "types-croniter (>=2.0.5.20240717,<3)"]
@@ -542,6 +544,17 @@ files = [
 ]
 
 [[package]]
+name = "polib"
+version = "1.2.0"
+description = "A library to manipulate gettext files (po and mo files)."
+optional = false
+python-versions = "*"
+files = [
+    {file = "polib-1.2.0-py2.py3-none-any.whl", hash = "sha256:1c77ee1b81feb31df9bca258cbc58db1bbb32d10214b173882452c73af06d62d"},
+    {file = "polib-1.2.0.tar.gz", hash = "sha256:f3ef94aefed6e183e342a8a269ae1fc4742ba193186ad76f175938621dbfc26b"},
+]
+
+[[package]]
 name = "pymediawiki"
 version = "0.7.4"
 description = "Wikipedia and MediaWiki API wrapper for Python"
@@ -607,6 +620,17 @@ dev = ["httpx", "svcs[tests,typing]", "tox (>4)"]
 docs = ["aiohttp", "fastapi", "flask", "furo (>=2023.8.17)", "httpx", "myst-parser", "pyramid", "pytest", "sphinx (>=7.2.2)", "sphinx-copybutton", "sphinx-design", "sphinx-notfound-page", "sphinxext-opengraph", "sqlalchemy", "starlette", "sybil"]
 tests = ["pytest", "pytest-asyncio", "sybil", "typing-extensions"]
 typing = ["aiohttp", "fastapi", "flask", "mypy (>=1.4)", "pyramid", "starlette"]
+
+[[package]]
+name = "types-polib"
+version = "1.2.0.20240327"
+description = "Typing stubs for polib"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "types-polib-1.2.0.20240327.tar.gz", hash = "sha256:d86add535343c293d3f94a16caca6ec3110ccc194a144743769f146cef6fa30d"},
+    {file = "types_polib-1.2.0.20240327-py3-none-any.whl", hash = "sha256:8cf6746e87f652599f06ac755fdd61e4582c756e7714f393fc6a89a8e8a5b152"},
+]
 
 [[package]]
 name = "urllib3"
@@ -731,4 +755,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "2ccea37898e31e6e9c089ddf79ef610f12a29a989ede7a0f808688bb3584a81c"
+content-hash = "4f1872864a05f1d332dae45dea2b9fbec86773610ac999481af2fd036b99b36e"

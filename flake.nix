@@ -33,6 +33,12 @@
             svcs = super.svcs.overridePythonAttrs (oldAttrs: {
               propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.hatchling self.pythonPackages.hatch-fancy-pypi-readme ];
             });
+            polib = super.polib.overridePythonAttrs (oldAttrs: {
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
+            });
+            types-polib = super.types-polib.overridePythonAttrs (oldAttrs: {
+              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
+            });
             hikari-lightbulb = super.hikari-lightbulb.overridePythonAttrs (oldAttrs: {
               propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.flit ];
             });
