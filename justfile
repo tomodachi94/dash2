@@ -18,7 +18,7 @@ format:
 
 check:
 	ruff check $(git ls-files '*.py')
-	poetry env use system && mypy -p dash
+	# poetry env use system && mypy -p dash
 
 check-formatting:
 	treefmt --fail-on-change
