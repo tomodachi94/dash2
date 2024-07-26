@@ -17,3 +17,9 @@ msgstr "Tells you about the bot."
 # XXX: Needs to be localized
 msgid "core.command.about.response"
 msgstr "Dash is a bot for the FTB Wiki's Discord."
+
+msgid "giphy.command.bunny.name"
+msgstr "bunny"
+
+msgid "giphy.command.bunny.desc"
+msgstr "Sends a bunny GIF."

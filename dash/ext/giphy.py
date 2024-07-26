@@ -11,7 +11,10 @@ GIPHY_TOKEN = os.environ["GIPHY_TOKEN"]
 
 @loader.command
 class BunnyCommand(
-    lightbulb.SlashCommand, name="bunny", description="Sends a bunny GIF."
+    lightbulb.SlashCommand,
+    name="giphy.command.bunny.name",
+    description="giphy.command.bunny.desc",
+    localize=True,
 ):
     @lightbulb.invoke
     async def invoke(self, ctx: lightbulb.Context) -> None:
