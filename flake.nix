@@ -61,7 +61,6 @@
 
           devShells = {
             default = pkgs.mkShellNoCC {
-              inputsFrom = [ self.packages.${system}.dash ];
               packages = with pkgs; [
                 just
                 poetry
