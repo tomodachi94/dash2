@@ -7,3 +7,13 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: tplain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+msgid "core.command.about.name"
+msgstr "about"
+
+msgid "core.command.about.desc"
+msgstr "Tells you about the bot."
+
+# XXX: Needs to be localized
+msgid "core.command.about.response"
+msgstr "Dash is a bot for the FTB Wiki's Discord."
