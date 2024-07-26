@@ -18,6 +18,44 @@ msgstr "Tells you about the bot."
 msgid "core.command.about.response"
 msgstr "Dash is a bot for the FTB Wiki's Discord."
 
+msgid "mw.commandGroup.article.name"
+msgstr "article"
+
+msgid "mw.commandGroup.article.desc"
+msgstr "Get information about an article."
+
+# XXX: Underscore required by library?
+msgid "mw.commonOption.showEmbeds.name"
+msgstr "show_embeds"
+
+msgid "mw.commonOption.showEmbeds.desc"
+msgstr "Toggle showing embeds. Disabled by default to prevent chat spam."
+
+msgid "mw.command.articleRevision.name"
+msgstr "revision"
+
+msgid "mw.command.articleRevision.desc"
+msgstr "Retrieves a page's current revision ID."
+
+# XXX: Underscore required by library?
+msgid "mw.command.articleRevision.option.showTitle.name"
+msgstr "show_title"
+
+msgid "mw.command.articleRevision.option.showTitle.desc"
+msgstr "The title of the target page."
+
+msgid "mw.command.articleRandom.name"
+msgstr "random"
+
+msgid "mw.command.articleRandom.desc"
+msgstr "Shows a random article."
+
+msgid "mw.command.articleRandom.option.number.name"
+msgstr "number"
+
+msgid "mw.command.articleRandom.option.number.desc"
+msgstr "The number of articles to show."
+
 msgid "giphy.command.bunny.name"
 msgstr "bunny"
 

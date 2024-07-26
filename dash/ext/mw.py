@@ -6,7 +6,13 @@ import mediawiki
 MEDIAWIKI_BASE_URL = os.getenv("MEDIAWIKI_BASE_URL", "https://ftb.fandom.com/wiki/")
 
 loader = lightbulb.Loader()
-group = loader.command(lightbulb.Group("article", "Get information about an article."))
+group = loader.command(
+    lightbulb.Group(
+        "mw.commandGroup.article.name",
+        "mw.commandGroup.article.desc",
+        localize=True,
+    )
+)
 
 
 def _make_url(title: str, embed=False):
@@ -46,8 +52,9 @@ def _make_url(title: str, embed=False):
 
 
 show_embeds_option = lightbulb.boolean(
-    "show_embeds",
-    "Toggle showing embeds. Disabled by default to prevent chat spam.",
+    "mw.commonOption.showEmbeds.name",
+    "mw.commonOption.showEmbeds.desc",
+    localize=True,
     default=False,
 )
 
@@ -55,10 +62,15 @@ show_embeds_option = lightbulb.boolean(
 @group.register
 class ArticleRevisionCommand(
     lightbulb.SlashCommand,
-    name="revision",
-    description="Retrieves a page's current revision ID.",
+    name="mw.command.articleRevision.name",
+    description="mw.command.articleRevision.desc",
+    localize=True,
 ):
-    article_title = lightbulb.string("article_title", "The title of the target page.")
+    article_title = lightbulb.string(
+        "mw.command.articleRevision.option.showTitle.name",
+        "mw.command.articleRevision.option.showTitle.desc",
+        localize=True,
+    )
     show_embeds = show_embeds_option
 
     @lightbulb.invoke
@@ -69,6 +81,7 @@ class ArticleRevisionCommand(
         url = _make_url(
             f"{article_title}?oldid={article_revision_id}", self.show_embeds
         )
+        # FIXME: Localize this output
         out = (
             f"The revision ID for the page `{article_title}` is "
             f"`{article_revision_id}`, available permanently at {url}."
@@ -79,11 +92,14 @@ class ArticleRevisionCommand(
 @group.register
 class ArticleRandomCommand(
     lightbulb.SlashCommand,
-    name="random",
-    description="Shows a random article.",
+    name="mw.command.articleRandom.name",
+    description="mw.command.articleRandom.desc",
+    localize=True,
 ):
     number = lightbulb.integer(
-        "number", "The amount of random articles to retrieve. Defaults to 1."
+        "mw.command.articleRandom.option.number.name",
+        "mw.command.articleRandom.option.number.desc",
+        localize=True,
     )
     show_embeds = show_embeds_option
 
