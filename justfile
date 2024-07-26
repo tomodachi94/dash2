@@ -3,6 +3,10 @@
 # just is "just a command runner."
 # Docs: https://just.systems/man/en/chapter_1.html
 
+run:
+	poetry install
+	poetry run dash
+
 build-app:
 	nix build .#dash
 
