@@ -1,0 +1,20 @@
+name: Bump flake.lock
+on:
+  workflow_dispatch: # allows manual triggering
+  schedule:
+    - cron: '0 16 * * 4' # runs weekly on Thursday at 16:00
+
+jobs:
+  lockfile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@ab6bcb2d5af0e904d04aea750e2089e9dc4cbfdd
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@db4ee38117a597ea8df8f7f75a187dd65093eade
+        with:
+          pr-title: "flake.lock: bump"
+          pr-labels: |
+            dependencies
