@@ -1,21 +1,19 @@
 name: Checks
-
 on: [push]
-
 jobs:
   just-ci:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: Install Nix
-      uses: cachix/install-nix-action@V27
-      with:
-        extra_nix_config: |
-          experimental-features = nix-command flakes
-          accept-flake-config = true
-    - name: Fetch CI dependencies
-      run: |
-        nix develop .#ci
-    - name: Execute `just check`
-      run: |
-        nix develop .#ci --command sh -c "just ci"
+      - uses: actions/checkout@v4
+      - name: Install Nix
+        uses: cachix/install-nix-action@V27
+        with:
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+            accept-flake-config = true
+      - name: Fetch CI dependencies
+        run: |
+          nix develop .#ci
+      - name: Execute `just check`
+        run: |
+          nix develop .#ci --command sh -c "just ci"
