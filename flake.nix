@@ -116,8 +116,8 @@
             systemd.services.dash = {
               description = "Dash, a bot for the FTB Wiki Discord";
               documentation = [ "https://github.com/tomodachi94/dash2" ];
-              after = [ "network.target" ];
-              wantedBy = [ "multi-user.target" ];
+              wants = [ "network-online.target" ];
+              after = [ "network-online.target" ];
               environment = {
                 MEDIAWIKI_API = config.services.dash.mediawiki-api-url;
                 MEDIAWIKI_BASE_URL = config.services.dash.mediawiki-base-url;
