@@ -24,23 +24,8 @@
           inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication defaultPoetryOverrides;
           # See https://github.com/nix-community/poetry2nix/blob/master/docs/edgecases.md#modulenotfounderror-no-module-named-packagename
           dashOverrides = defaultPoetryOverrides.extend (self: super: {
-            ezgiphy = super.ezgiphy.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
-            });
-            pymediawiki = super.pymediawiki.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
-            });
-            svcs = super.svcs.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.hatchling self.pythonPackages.hatch-fancy-pypi-readme ];
-            });
             types-networkx = super.types-networkx.overridePythonAttrs (oldAttrs: {
               propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
-            });
-            types-polib = super.types-polib.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
-            });
-            hikari-lightbulb = super.hikari-lightbulb.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.flit ];
             });
           });
         in
