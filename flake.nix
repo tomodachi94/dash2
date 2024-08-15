@@ -48,35 +48,7 @@
 
           };
 
-          devShells = {
-            default = pkgs.mkShellNoCC {
-              packages = with pkgs; [
-                just
-                poetry
-                reuse
-                ruff
-                treefmt
-                nixpkgs-fmt
-                taplo
-                yamlfmt
-                statix
-              ] ++ self.checks.${system}.pre-commit-check.enabledPackages;
-              inherit (self.checks.${system}.pre-commit-check) shellHook;
-            };
-            ci = pkgs.mkShellNoCC {
-              packages = with pkgs; [
-                just
-                poetry
-                reuse
-                ruff
-                mypy
-                nixpkgs-fmt
-                taplo
-                yamlfmt
-                treefmt
-              ];
-            };
-          };
+          devShells = import ./extras/nix/devshells.nix { inherit pkgs system self; };
 
           checks = {
             pre-commit-check = pre-commit-hooks.lib.${system}.run {
