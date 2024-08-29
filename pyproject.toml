@@ -10,7 +10,7 @@ readme = "README.md"
 python = ">=3.11,<3.13"
 ezgiphy = "^0.0.4"
 pymediawiki = "^0.7.4"
-hikari-lightbulb = { version = "^3.0.0a10", extras = ["localization"] }
+hikari-lightbulb = { version = "^3.0.0a11", extras = ["localization"] }
 hikari = "^2.0.0"
 
 [tool.poetry.scripts]
