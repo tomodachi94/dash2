@@ -430,31 +430,31 @@ speedups = ["aiohttp[speedups] (>=3.10,<4.0)", "ciso8601 (>=2.3,<3.0)", "orjson 
 
 [[package]]
 name = "hikari-lightbulb"
-version = "3.0.0a10"
+version = "3.0.0a11"
 description = "A simple, elegant, and powerful command handler for Hikari."
 optional = false
 python-versions = "<3.13,>=3.10.0"
 files = [
-    {file = "hikari_lightbulb-3.0.0a10-py3-none-any.whl", hash = "sha256:1bee96ed1aa9b916d6a4e5b32ae9537a8ceaca93e2626eb24f62d82ea9cf21bd"},
-    {file = "hikari_lightbulb-3.0.0a10.tar.gz", hash = "sha256:1c24642dd04884606131caf769fa8522e1e650a93627cb738bb9fb3fc474c220"},
+    {file = "hikari_lightbulb-3.0.0a11-py3-none-any.whl", hash = "sha256:541f46a9acd333f6e78543aee6b689e23b8873b3ff760a0b8c75f7eded138bf8"},
+    {file = "hikari_lightbulb-3.0.0a11.tar.gz", hash = "sha256:44412514c208d580252ef353873ed97a65feeae5f924dc91cf2284ca2136c092"},
 ]
 
 [package.dependencies]
 async-timeout = ">=4,<5"
-hikari = ">=2.0.0.dev126,<3"
+hikari = ">=2.0.0,<2.1.0"
 networkx = ">=3.3,<4"
 polib = {version = ">=1.2.0,<2", optional = true, markers = "extra == \"localization\""}
 
 [package.extras]
 crontrigger = ["croniter (>=3.0.3,<4)"]
 dev = ["nox (==2024.4.15)"]
-dev-changelog = ["towncrier (==24.7.1)"]
+dev-changelog = ["towncrier (==24.8.0)"]
 dev-docs = ["furo (==2024.8.6)", "myst-parser (>=4.0.0,<5)", "sphinx (>=8.0.2,<9)", "sphinx-copybutton (>=0.5.2,<1)", "sphinx-inline-tabs (==2023.4.21)", "sphinx-notfound-page (>=1.0.2,<2)", "sphinx-prompt (>=1.8.0,<2)", "sphinx_design (>=0.6.0,<1)", "sphinxcontrib-mermaid (>=0.9.2,<1)", "sphinxext-opengraph (>=0.9.1,<1)"]
-dev-format = ["ruff (>=0.5.5,<1)"]
+dev-format = ["ruff (==0.6.2)"]
 dev-release = ["flit (==3.9.0)"]
 dev-slotscheck = ["slotscheck (>=0.19.0,<1)"]
-dev-test = ["pytest (>=8.3.2,<9)", "pytest-asyncio (>=0.23.8,<0.24)", "pytest-cov (>=5.0.0,<6)"]
-dev-typecheck = ["pyright (==1.1.376)", "types-croniter (>=3.0.0.20240727,<4)", "types-networkx (>=3.2.1.20240703,<4)", "types-polib (>=1.2.0.20240327,<2)", "typing-extensions (>=4.12.2,<5)"]
+dev-test = ["pytest (>=8.3.2,<9)", "pytest-asyncio (>=0.23.8,<0.25)", "pytest-cov (>=5.0.0,<6)", "pytest-randomly (>=3.15.0,<4)"]
+dev-typecheck = ["pyright (==1.1.378)", "types-croniter (>=3.0.0.20240727,<4)", "types-networkx (>=3.2.1.20240703,<4)", "types-polib (>=1.2.0.20240327,<2)", "typing-extensions (>=4.12.2,<5)"]
 localization = ["polib (>=1.2.0,<2)"]
 
 [[package]]
@@ -766,4 +766,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "8926c25542c83d35f527b6203ee9adfaeb55af93b6f05ff447b40b373e05fcf1"
+content-hash = "c5a81fcfe20f63c692b7bd453e8f7ff6fd39274eb1738ecfd25c75a1bb2e203e"
