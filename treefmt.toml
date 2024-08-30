@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Tomodachi94
+#
+# SPDX-License-Identifier: MIT
+
 # One CLI to format the code tree - https://github.com/numtide/treefmt
 
 [formatter.ruff]

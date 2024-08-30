@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 Tomodachi94
+
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
+-->
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

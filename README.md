@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 Tomodachi94
+
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
+-->
+
 # Dash 2
 
 A cleanroom rewrite of [Dash](https://github.com/tomodachi94/dash) on [Lightbulb](https://github.com/tandemdude/hikari-lightbulb) and [Hikari](https://github.com/hikari-py/hikari).
