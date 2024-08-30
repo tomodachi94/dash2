@@ -1,5 +1,9 @@
 #!/usr/bin/env just --justfile
 
+# SPDX-FileCopyrightText: 2024 Tomodachi94
+#
+# SPDX-License-Identifier: MIT
+
 # just is "just a command runner."
 # Docs: https://just.systems/man/en/chapter_1.html
 

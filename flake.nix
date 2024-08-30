@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2024 Tomodachi94
+#
+# SPDX-License-Identifier: MIT
+
 {
   description = "Application packaged using poetry2nix";
 

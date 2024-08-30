@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2024 Tomodachi94
+
+SPDX-License-Identifier: CC-BY-NC-SA-4.0
+-->
+
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge

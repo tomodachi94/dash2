@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+
+# SPDX-FileCopyrightText: 2024 Tomodachi94
+#
+# SPDX-License-Identifier: MIT
+
 """
 Core bot code. Loads in extensions and initializes bot instance.
 """
