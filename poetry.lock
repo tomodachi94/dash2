@@ -430,13 +430,13 @@ speedups = ["aiohttp[speedups] (>=3.10,<4.0)", "ciso8601 (>=2.3,<3.0)", "orjson 
 
 [[package]]
 name = "hikari-lightbulb"
-version = "3.0.0a11"
+version = "3.0.0a12"
 description = "A simple, elegant, and powerful command handler for Hikari."
 optional = false
 python-versions = "<3.13,>=3.10.0"
 files = [
-    {file = "hikari_lightbulb-3.0.0a11-py3-none-any.whl", hash = "sha256:541f46a9acd333f6e78543aee6b689e23b8873b3ff760a0b8c75f7eded138bf8"},
-    {file = "hikari_lightbulb-3.0.0a11.tar.gz", hash = "sha256:44412514c208d580252ef353873ed97a65feeae5f924dc91cf2284ca2136c092"},
+    {file = "hikari_lightbulb-3.0.0a12-py3-none-any.whl", hash = "sha256:f3625d3165c4b9e97f3fe9fb937361393b83cba13f201b06acfc5f29ebbd56ea"},
+    {file = "hikari_lightbulb-3.0.0a12.tar.gz", hash = "sha256:67c7c4e3b9a35f5053d4a7d8d8bd07d75fcc769ae98b075959abe38398284868"},
 ]
 
 [package.dependencies]
@@ -450,7 +450,7 @@ crontrigger = ["croniter (>=3.0.3,<4)"]
 dev = ["nox (==2024.4.15)"]
 dev-changelog = ["towncrier (==24.8.0)"]
 dev-docs = ["furo (==2024.8.6)", "myst-parser (>=4.0.0,<5)", "sphinx (>=8.0.2,<9)", "sphinx-copybutton (>=0.5.2,<1)", "sphinx-inline-tabs (==2023.4.21)", "sphinx-notfound-page (>=1.0.2,<2)", "sphinx-prompt (>=1.8.0,<2)", "sphinx_design (>=0.6.0,<1)", "sphinxcontrib-mermaid (>=0.9.2,<1)", "sphinxext-opengraph (>=0.9.1,<1)"]
-dev-format = ["ruff (==0.6.2)"]
+dev-format = ["ruff (==0.6.3)"]
 dev-release = ["flit (==3.9.0)"]
 dev-slotscheck = ["slotscheck (>=0.19.0,<1)"]
 dev-test = ["pytest (>=8.3.2,<9)", "pytest-asyncio (>=0.23.8,<0.25)", "pytest-cov (>=5.0.0,<6)", "pytest-randomly (>=3.15.0,<4)"]
@@ -766,4 +766,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "c5a81fcfe20f63c692b7bd453e8f7ff6fd39274eb1738ecfd25c75a1bb2e203e"
+content-hash = "8338be40397036139e96e43424fb586945e8db975c4cb074e65000fe4d0c0aab"
