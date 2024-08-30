@@ -53,6 +53,7 @@
               packages = with pkgs; [
                 just
                 poetry
+                reuse
                 ruff
                 treefmt
                 nixpkgs-fmt
@@ -66,6 +67,7 @@
               packages = with pkgs; [
                 just
                 poetry
+                reuse
                 ruff
                 mypy
                 nixpkgs-fmt

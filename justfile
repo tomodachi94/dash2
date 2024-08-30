@@ -20,9 +20,13 @@ build-container:
 format:
 	treefmt
 
-check:
+reuse:
+	reuse lint
+
+ruff:
 	ruff check $(git ls-files '*.py')
-	# poetry env use system && mypy -p dash
+
+check: ruff reuse
 
 check-formatting:
 	treefmt --fail-on-change
