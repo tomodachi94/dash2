@@ -6,7 +6,6 @@
   description = "Application packaged using poetry2nix";
 
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     pre-commit-hooks = {
       url = "github:cachix/pre-commit-hooks.nix";
@@ -19,20 +18,24 @@
     };
   };
 
-  outputs = { self, nixpkgs, pre-commit-hooks, flake-utils, poetry2nix }:
-    flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          packages = import ./extras/nix/packages.nix { inherit pkgs poetry2nix system self; };
+  outputs = { self, nixpkgs, pre-commit-hooks, poetry2nix }:
+    let
+      forAllSystems = function:
+        nixpkgs.lib.genAttrs [
+          "x86_64-linux"
+          "aarch64-linux"
+          "x86_64-darwin"
+          "aarch64-darwin"
+        ]
+          (system: function nixpkgs.legacyPackages.${system});
+    in
+    {
+      packages = forAllSystems (pkgs: import ./extras/nix/packages.nix { inherit self pkgs poetry2nix; });
 
-          devShells = import ./extras/nix/devshells.nix { inherit pkgs system self; };
+      devShells = forAllSystems (pkgs: import ./extras/nix/devshells.nix { inherit self pkgs; });
 
-          checks = import ./extras/nix/checks.nix { inherit pre-commit-hooks system self; };
+      checks = forAllSystems (pkgs: import ./extras/nix/checks.nix { inherit self pkgs pre-commit-hooks; });
 
-        }) // {
       nixosModules.default = ./extras/nix/module.nix;
     };
 }

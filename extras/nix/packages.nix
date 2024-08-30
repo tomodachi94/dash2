@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: MIT
 
-{ self, system, pkgs, poetry2nix }:
+{ self, pkgs, poetry2nix }:
 let
   # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
   inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication defaultPoetryOverrides;
