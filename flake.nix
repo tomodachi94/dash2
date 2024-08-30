@@ -30,19 +30,8 @@
 
           devShells = import ./extras/nix/devshells.nix { inherit pkgs system self; };
 
-          checks = {
-            pre-commit-check = pre-commit-hooks.lib.${system}.run {
-              src = ./.;
-              hooks = {
-                just-ci = {
-                  enable = true;
-                  name = "just ci";
-                  entry = "just ci";
-                  pass_filenames = false;
-                };
-              };
-            };
-          };
+          checks = import ./extras/nix/checks.nix { inherit pre-commit-hooks system self; };
+
         }) // {
       nixosModules.default = ./extras/nix/module.nix;
     };
