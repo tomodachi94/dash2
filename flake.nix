@@ -23,30 +23,10 @@
     flake-utils.lib.eachDefaultSystem
       (system:
         let
-          # see https://github.com/nix-community/poetry2nix/tree/master#api for more functions and examples.
           pkgs = nixpkgs.legacyPackages.${system};
-          inherit (poetry2nix.lib.mkPoetry2Nix { inherit pkgs; }) mkPoetryApplication defaultPoetryOverrides;
-          # See https://github.com/nix-community/poetry2nix/blob/master/docs/edgecases.md#modulenotfounderror-no-module-named-packagename
-          dashOverrides = defaultPoetryOverrides.extend (self: super: {
-            types-networkx = super.types-networkx.overridePythonAttrs (oldAttrs: {
-              propagatedBuildInputs = oldAttrs.propagatedBuildInputs or [ ] ++ [ self.pythonPackages.setuptools ];
-            });
-          });
         in
         {
-          packages = {
-            dash = mkPoetryApplication {
-              projectDir = self;
-              overrides = dashOverrides;
-              meta.mainProgram = "dash";
-            };
-            default = self.packages.${system}.dash;
-            dash-container = pkgs.dockerTools.streamLayeredImage {
-              name = "io.github.tomodachi94.dash2";
-              config.Cmd = [ "${self.packages.${system}.dash}/bin/dash" ];
-            };
-
-          };
+          packages = import ./extras/nix/packages.nix { inherit pkgs poetry2nix system self; };
 
           devShells = import ./extras/nix/devshells.nix { inherit pkgs system self; };
 
