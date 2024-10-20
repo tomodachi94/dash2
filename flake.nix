@@ -36,6 +36,6 @@
 
       checks = forAllSystems (pkgs: import ./extras/nix/checks.nix { inherit self pkgs pre-commit-hooks; });
 
-      nixosModules.default = ./extras/nix/module.nix;
+      nixosModules.default = ./extras/nix/module;
     };
 }

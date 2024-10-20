@@ -15,5 +15,12 @@
       };
     };
   };
+  nixos-module-test-check = (pkgs.nixos [
+    self.nixosModules.default
+    ({ ... }: {
+      # Workaround: We are unable to pass dash2 as an input without more boilerplate
+      services.dash.package = self.packages.${pkgs.system}.dash;
+    })
+  ]
+  ).config.system.build.toplevel;
 }
-

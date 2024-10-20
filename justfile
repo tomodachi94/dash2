@@ -31,7 +31,10 @@ check: ruff reuse
 check-formatting:
 	treefmt --fail-on-change
 
+ci-check-module:
+	nix build .#checks.x86_64-linux.nixos-module-test-check
+
 wipe-slash-commands:
 	python3 ./.github/scripts/wipe_slash_commands.py
 
-ci: check check-formatting
+ci: check check-formatting ci-check-module

@@ -35,12 +35,12 @@
       enableStrictShellChecks = true;
       wants = [ "network-online.target" ];
       after = [ "network-online.target" ];
-      execStart = lib.getExe config.services.dash.package;
       environment = {
         MEDIAWIKI_API = config.services.dash.mediawiki-api-url;
         MEDIAWIKI_BASE_URL = config.services.dash.mediawiki-base-url;
       };
       serviceConfig = {
+        ExecStart = lib.getExe config.services.dash.package;
         EnvironmentFile = config.services.dash.secretsFile;
         DynamicUser = true;
         NoNewPrivileges = true;
