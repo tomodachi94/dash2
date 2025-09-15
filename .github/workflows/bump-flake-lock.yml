@@ -1,7 +1,6 @@
 # SPDX-FileCopyrightText: 2021 Determinate Systems, Inc.
 #
 # SPDX-License-Identifier: MIT
-
 name: Bump flake.lock
 on:
   workflow_dispatch: # allows manual triggering
