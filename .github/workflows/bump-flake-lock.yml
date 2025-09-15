@@ -5,8 +5,9 @@
 name: Bump flake.lock
 on:
   workflow_dispatch: # allows manual triggering
-  schedule:
-    - cron: '0 16 * * 4' # runs weekly on Thursday at 16:00
+  push:
+    branches:
+      - "main"
 jobs:
   lockfile:
     runs-on: ubuntu-latest
