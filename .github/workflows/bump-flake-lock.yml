@@ -1,6 +1,7 @@
 # SPDX-FileCopyrightText: 2021 Determinate Systems, Inc.
 #
 # SPDX-License-Identifier: MIT
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Bump flake.lock
 on:
   workflow_dispatch: # allows manual triggering
