@@ -1,23 +1,23 @@
 # SPDX-FileCopyrightText: 2024 Tomodachi94
 #
 # SPDX-License-Identifier: MIT
+#:schema https://www.schemastore.org/pyproject.json
 
-[tool.poetry]
+[project]
 name = "dash"
 version = "0.4.1"
 description = "A cleanroom rewrite of Dash in Hikari."
-authors = ["Tomo <68489118+Tomodachi94@users.noreply.github.com>"]
+authors = [{ name = "Tomodachi94" }]
 license = "MIT"
-readme = "README.md"
+dynamic = ["readme"]
+dependencies = [
+  "ezgiphy>=0.0.4,<0.1.0",
+  "pymediawiki>=0.7.4,<0.8.0",
+  "hikari-lightbulb[localization]>=3.0.0a12,<3.0.1a0",
+  "hikari>=2.0.0,<3.0.0",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.11,<3.13"
-ezgiphy = "^0.0.4"
-pymediawiki = "^0.7.4"
-hikari-lightbulb = { version = "^3.0.0a12", extras = ["localization"] }
-hikari = "^2.0.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 dash = "dash.__main__:main"
 
 [tool.ruff]
