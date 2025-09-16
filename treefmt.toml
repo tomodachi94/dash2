@@ -1,4 +1,4 @@
-#:schema ./treefmt-schema-10.json
+#:schema https://www.schemastore.org/treefmt.json
 # SPDX-FileCopyrightText: 2024 Tomodachi94
 #
 # SPDX-License-Identifier: MIT
