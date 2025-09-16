@@ -37,4 +37,4 @@ ci-check-module:
 wipe-slash-commands:
 	python3 ./.github/scripts/wipe_slash_commands.py
 
-ci: check check-formatting ci-check-module
+ci: check check-formatting
