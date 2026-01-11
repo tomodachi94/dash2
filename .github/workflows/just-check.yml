@@ -4,6 +4,8 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: Checks
 on: [push]
+permissions:
+  contents: read
 jobs:
   just-ci:
     runs-on: ubuntu-latest

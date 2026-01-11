@@ -17,6 +17,8 @@ on:
       - '*.py'
   schedule:
     - cron: '36 9 * * 5'
+permissions:
+  contents: read
 jobs:
   analyze:
     name: Analyze
