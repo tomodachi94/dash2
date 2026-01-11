@@ -14,7 +14,7 @@ requires-python = ">=3.10.0,<3.13"
 dependencies = [
   "ezgiphy@https://github.com/tomodachi94/ezgiphy/archive/refs/heads/type-hints.zip",
   "pymediawiki>=0.7.4,<0.8.0",
-  "hikari-lightbulb[localization]>=3.0.0a12,<3.2.2",
+  "hikari-lightbulb[localization]>=3.0.0a12,<3.2.3",
   "hikari>=2.0.0,<3.0.0",
 ]
 
