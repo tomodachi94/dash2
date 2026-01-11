@@ -329,14 +329,13 @@ description = "A wrapper for the giphy public API"
 optional = false
 python-versions = "*"
 groups = ["main"]
-files = []
-develop = false
+files = [
+    {file = "type-hints.zip", hash = "sha256:7b7bc1383c1d5267c2df6d479778995a9cceeebd775e61a8c9d944b3497d73ea"},
+]
 
 [package.source]
-type = "git"
-url = "https://github.com/tomodachi94/ezgiphy"
-reference = "HEAD"
-resolved_reference = "b7e732e02c1b8920c259357119885f8ef080f5cb"
+type = "url"
+url = "https://github.com/tomodachi94/ezgiphy/archive/refs/heads/type-hints.zip"
 
 [[package]]
 name = "frozenlist"
@@ -795,4 +794,4 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10.0,<3.13"
-content-hash = "630c72727953c2d4764851aa353f0f790e0a70b37869cb6e9119c269a2a61d5b"
+content-hash = "e1e54d3bb4f01ddd5a35935e27c8ef10765d69a800349302209522a283ab4090"

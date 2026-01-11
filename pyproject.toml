@@ -12,7 +12,7 @@ license = "MIT"
 dynamic = ["readme"]
 requires-python = ">=3.10.0,<3.13"
 dependencies = [
-  "ezgiphy>=0.0.4,<0.1.0",
+  "ezgiphy@https://github.com/tomodachi94/ezgiphy/archive/refs/heads/type-hints.zip",
   "pymediawiki>=0.7.4,<0.8.0",
   "hikari-lightbulb[localization]>=3.0.0a12,<3.2.2",
   "hikari>=2.0.0,<3.0.0",
@@ -29,9 +29,6 @@ select = ["E4", "E7", "E9", "F", "I", "N"]
 [tool.mypy]
 warn_return_any = true
 warn_unused_configs = true
-[[tool.mypy.overrides]]
-module = ["ezgiphy"]
-ignore_missing_imports = true
 
 [build-system]
 requires = ["poetry-core"]
